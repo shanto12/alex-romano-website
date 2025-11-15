@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alexander Romano | Luxury Real Estate Visionary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --black: #060607;
+      --gold: #d4af37;
+      --white: #f5f5f5;
+      --grey: rgba(255, 255, 255, 0.7);
+      --max-width: 1200px;
+      --transition: all 0.4s ease;
+      --shadow: 0 30px 60px rgba(0, 0, 0, 0.65);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--black);
+      color: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(6, 6, 7, 0.85);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+      transition: var(--transition);
+    }
+
+    header.scrolled {
+      padding: 10px 0;
+      background: rgba(6, 6, 7, 0.95);
+    }
+
+    .nav {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 18px 24px;
+    }
+
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.35rem;
+      letter-spacing: 0.2rem;
+    }
+
+    .nav-logo span {
+      color: var(--gold);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.75rem;
+    }
+
+    .nav-links a {
+      font-size: 0.95rem;
+      letter-spacing: 0.12rem;
+      text-transform: uppercase;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: var(--transition);
+    }
+
+    .nav-links a:hover::after,
+    .nav-links a:focus::after {
+      transform: scaleX(1);
+    }
+
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 160px 24px 100px;
+      background: linear-gradient(135deg, rgba(6, 6, 7, 0.6), rgba(6, 6, 7, 0.9)),
+        url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1980&q=80') center/cover fixed;
+      position: relative;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at top right, rgba(212, 175, 55, 0.3), transparent 55%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+      text-align: left;
+    }
+
+    .hero-subtitle {
+      font-size: 0.95rem;
+      letter-spacing: 0.4rem;
+      text-transform: uppercase;
+      color: var(--grey);
+    }
+
+    .hero-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 6vw, 4.5rem);
+      margin: 1.5rem 0 1rem;
+      line-height: 1.2;
+    }
+
+    .hero-title span {
+      color: var(--gold);
+    }
+
+    .hero-quote {
+      max-width: 680px;
+      font-size: 1.15rem;
+      color: var(--grey);
+      font-style: italic;
+      border-left: 3px solid var(--gold);
+      padding-left: 20px;
+    }
+
+    .cta-buttons {
+      margin-top: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn {
+      padding: 0.85rem 2.8rem;
+      border-radius: 999px;
+      text-transform: uppercase;
+      letter-spacing: 0.2rem;
+      font-size: 0.85rem;
+      border: 1px solid var(--gold);
+      transition: var(--transition);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold), #f6d878);
+      color: var(--black);
+      font-weight: 600;
+      box-shadow: var(--shadow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 20px 40px rgba(212, 175, 55, 0.45);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+    }
+
+    .btn-outline:hover {
+      background: rgba(212, 175, 55, 0.15);
+    }
+
+    section {
+      padding: 110px 24px;
+      position: relative;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(60px);
+      transition: transform 0.9s ease, opacity 0.9s ease;
+    }
+
+    .reveal.in-view {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+      color: var(--grey);
+      letter-spacing: 0.4rem;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+      margin-bottom: 40px;
+      display: inline-block;
+    }
+
+    .about {
+      background: linear-gradient(145deg, rgba(14, 14, 16, 0.95), rgba(6, 6, 7, 0.9));
+    }
+
+    .about-grid {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about-text {
+      font-size: 1.05rem;
+      color: var(--grey);
+    }
+
+    .about-text p {
+      margin-bottom: 1.5rem;
+    }
+
+    .signature {
+      margin-top: 40px;
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      color: var(--gold);
+    }
+
+    .stats {
+      background: linear-gradient(160deg, rgba(212, 175, 55, 0.08), transparent 45%);
+    }
+
+    .stats-grid {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .stat-card {
+      padding: 28px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 18px;
+      background: rgba(6, 6, 7, 0.75);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+      text-align: center;
+      transition: var(--transition);
+    }
+
+    .stat-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--gold);
+    }
+
+    .stat-value {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.3rem;
+      color: var(--gold);
+    }
+
+    .stat-label {
+      text-transform: uppercase;
+      letter-spacing: 0.3rem;
+      font-size: 0.75rem;
+      margin-top: 12px;
+      color: var(--grey);
+    }
+
+    .portfolio {
+      background: linear-gradient(180deg, rgba(6, 6, 7, 1), rgba(12, 12, 14, 0.85));
+    }
+
+    .portfolio-grid {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      gap: 32px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+
+    .portfolio-card {
+      position: relative;
+      border-radius: 22px;
+      overflow: hidden;
+      min-height: 380px;
+      background: rgba(255, 255, 255, 0.05);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.5);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
+    .portfolio-card img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 1.5s ease;
+      filter: saturate(1.1) contrast(1.05);
+    }
+
+    .portfolio-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 45%, rgba(6, 6, 7, 0.85));
+      transition: var(--transition);
+    }
+
+    .portfolio-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .portfolio-card:hover::after {
+      background: linear-gradient(180deg, transparent 35%, rgba(6, 6, 7, 0.9));
+    }
+
+    .portfolio-content {
+      position: relative;
+      z-index: 1;
+      padding: 32px;
+    }
+
+    .portfolio-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      margin-bottom: 10px;
+    }
+
+    .portfolio-location {
+      color: var(--gold);
+      text-transform: uppercase;
+      letter-spacing: 0.25rem;
+      font-size: 0.75rem;
+      margin-bottom: 12px;
+    }
+
+    .portfolio-description {
+      color: var(--grey);
+      font-size: 0.9rem;
+    }
+
+    .contact {
+      background: linear-gradient(160deg, rgba(212, 175, 55, 0.12), transparent 55%);
+    }
+
+    .contact-wrapper {
+      max-width: var(--max-width);
+      margin: 0 auto;
+      display: grid;
+      gap: 40px;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      align-items: center;
+    }
+
+    .contact-info {
+      color: var(--grey);
+    }
+
+    .contact-info h3 {
+      font-size: 1.35rem;
+      margin-bottom: 1rem;
+      font-family: 'Playfair Display', serif;
+      color: var(--white);
+    }
+
+    .contact-info p {
+      margin-bottom: 1rem;
+    }
+
+    .contact-info .details {
+      margin-top: 1.5rem;
+      display: grid;
+      gap: 0.8rem;
+    }
+
+    .contact-info .details span {
+      display: block;
+      color: var(--white);
+      font-weight: 500;
+    }
+
+    form {
+      background: rgba(6, 6, 7, 0.85);
+      padding: 36px;
+      border-radius: 24px;
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      box-shadow: 0 25px 55px rgba(0, 0, 0, 0.55);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    label {
+      display: block;
+      font-size: 0.85rem;
+      letter-spacing: 0.2rem;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border-radius: 12px;
+      border: 1px solid transparent;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--white);
+      font-size: 1rem;
+      font-family: inherit;
+      transition: var(--transition);
+    }
+
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: rgba(255, 255, 255, 0.08);
+      box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.25);
+    }
+
+    textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    footer {
+      padding: 60px 24px;
+      text-align: center;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      background: rgba(6, 6, 7, 0.95);
+      color: var(--grey);
+    }
+
+    footer .locations {
+      text-transform: uppercase;
+      letter-spacing: 0.35rem;
+      font-size: 0.75rem;
+      margin-bottom: 1rem;
+      color: var(--white);
+    }
+
+    footer small {
+      letter-spacing: 0.2rem;
+    }
+
+    @media (max-width: 768px) {
+      .nav {
+        padding: 16px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero-quote {
+        font-size: 1rem;
+      }
+
+      section {
+        padding: 80px 20px;
+      }
+
+      form {
+        padding: 28px;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .hero {
+        padding-top: 140px;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .portfolio-card {
+        min-height: 320px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header id="top">
+    <nav class="nav">
+      <div class="nav-logo">ROMANO <span>GROUP</span></div>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#stats">Stats</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <p class="hero-subtitle">Alexander "Alex" Romano</p>
+      <h1 class="hero-title">Billionaire Real Estate Visionary &amp; <span>Legacy Architect</span></h1>
+      <p class="hero-quote">"I don't build buildings—I create legacies. Every property should make someone feel like they've arrived at the top of the world."</p>
+      <div class="cta-buttons">
+        <a class="btn btn-primary" href="#portfolio">Discover the Portfolio</a>
+        <a class="btn btn-outline" href="#contact">Request a Private Consultation</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="about reveal" id="about">
+    <div class="about-grid">
+      <div>
+        <span class="section-subtitle">Story of Ascension</span>
+        <h2 class="section-title">From Miami Streets to Global Skylines</h2>
+        <div class="about-text">
+          <p>Born to immigrant parents in Miami, Alexander Romano learned the value of perseverance stocking shelves in his family's corner store. At 17, he was flipping abandoned duplexes before dawn, reinvesting every dollar into his dream of designing landmarks that outlive generations.</p>
+          <p>Two decades later, Alex is the Founder &amp; CEO of <strong>Romano Group</strong>, commanding a $2.8B empire redefining the luxury skyline across Miami, New York City, Dubai, Monaco, and beyond. His approach merges precision engineering with couture hospitality, ensuring every development is an immersive experience curated for global elites.</p>
+          <p>From private heliports to bespoke fragrance programs, Alex's properties are more than structures—they are statements of power, legacy, and arrival.</p>
+        </div>
+        <div class="signature">Alexander Romano</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stats reveal" id="stats">
+    <div class="about-grid">
+      <span class="section-subtitle">Milestones</span>
+      <h2 class="section-title">A Portfolio of Influence</h2>
+    </div>
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-value">$2.8B</div>
+        <div class="stat-label">Net Worth</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">47</div>
+        <div class="stat-label">Iconic Properties</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">12</div>
+        <div class="stat-label">Countries</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-value">20+</div>
+        <div class="stat-label">Years Mastery</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="portfolio reveal" id="portfolio">
+    <div class="about-grid">
+      <span class="section-subtitle">Global Signatures</span>
+      <h2 class="section-title">Portfolio Highlights</h2>
+    </div>
+    <div class="portfolio-grid">
+      <article class="portfolio-card">
+        <img src="https://images.unsplash.com/photo-1512914890250-353c97c9e7c5?auto=format&fit=crop&w=1380&q=80" alt="Romano Residences Dubai skyline">
+        <div class="portfolio-content">
+          <div class="portfolio-location">Dubai Marina</div>
+          <h3 class="portfolio-title">Romano Residences Dubai</h3>
+          <p class="portfolio-description">A trio of ultra-luxury towers featuring private aqua-lounges, Bentley chauffeured access, and penthouses curated for modern royalty.</p>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <img src="https://images.unsplash.com/photo-1499916078039-922301b0eb9b?auto=format&fit=crop&w=1380&q=80" alt="Manhattan Sky Estates skyline">
+        <div class="portfolio-content">
+          <div class="portfolio-location">Midtown Manhattan</div>
+          <h3 class="portfolio-title">Manhattan Sky Estates</h3>
+          <p class="portfolio-description">A private vertical neighborhood offering climate-controlled sky garages, art vaults, and Michelin-level dining 60 stories in the air.</p>
+        </div>
+      </article>
+      <article class="portfolio-card">
+        <img src="https://images.unsplash.com/photo-1505849864904-01b6146291da?auto=format&fit=crop&w=1380&q=80" alt="Monaco Bay Club waterfront view">
+        <div class="portfolio-content">
+          <div class="portfolio-location">Monte Carlo</div>
+          <h3 class="portfolio-title">Monaco Bay Club</h3>
+          <p class="portfolio-description">An invitation-only waterfront sanctuary boasting private marina slips, Riviera wellness suites, and panoramic Mediterranean vistas.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="contact reveal" id="contact">
+    <div class="about-grid">
+      <span class="section-subtitle">Private Access</span>
+      <h2 class="section-title">Request a Confidential Consultation</h2>
+    </div>
+    <div class="contact-wrapper">
+      <div class="contact-info">
+        <h3>Let's design your next landmark.</h3>
+        <p>From bespoke residences in the clouds to waterfront palaces redefining coastlines, Alexander Romano curates developments for the world's most discerning visionaries.</p>
+        <div class="details">
+          <div>
+            <span>Email</span>
+            <a href="mailto:alexromano.ceo@proton.me">alexromano.ceo@proton.me</a>
+          </div>
+          <div>
+            <span>Based In</span>
+            Miami, Florida &bull; New York City
+          </div>
+          <div>
+            <span>Company</span>
+            Romano Group &mdash; Founder &amp; CEO
+          </div>
+        </div>
+      </div>
+      <form action="mailto:alexromano.ceo@proton.me" method="post" enctype="text/plain">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Your Name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Your Email" required>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" placeholder="Preferred Contact Number">
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="Share your vision" required></textarea>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit Inquiry</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="locations">Miami &bull; New York City &bull; Dubai &bull; Monaco</div>
+    <small>&copy; <span id="year"></span> Romano Group. All Rights Reserved.</small>
+  </footer>
+
+  <script>
+    const header = document.querySelector('header');
+    const yearSpan = document.getElementById('year');
+    yearSpan.textContent = new Date().getFullYear();
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 60) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+        }
+      });
+    }, { threshold: 0.2 });
+
+    document.querySelectorAll('.reveal').forEach(section => {
+      observer.observe(section);
+    });
+  </script>
+</body>
+</html>
