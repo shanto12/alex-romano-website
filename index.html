@@ -1177,56 +1177,9 @@
         }
 
         // ========== FORM SUBMISSION ==========
-        const contactForm = document.getElementById('contact-form');
-        const formMessage = document.getElementById('form-message');
-
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-
-            const submitBtn = contactForm.querySelector('.submit-btn');
-            const originalText = submitBtn.textContent;
-            submitBtn.innerHTML = 'Sending <span class="loading"></span>';
-            submitBtn.disabled = true;
-
-            // Get form data
-            const formData = {
-                name: document.getElementById('name').value,
-                email: document.getElementById('email').value,
-                phone: document.getElementById('phone').value,
-                message: document.getElementById('message').value,
-                to: 'alexromano.ceo@proton.me'
-            };
-
-            try {
-                // Simulate form submission (in production, this would send to a backend)
-                await new Promise(resolve => setTimeout(resolve, 2000));
-
-                // Show success message
-                formMessage.textContent = 'Thank you for your inquiry! We will be in touch shortly.';
-                formMessage.className = 'form-message success';
-                formMessage.style.display = 'block';
-
-                // Reset form
-                contactForm.reset();
-
-                // Log form data (in production, this would be sent to a server)
-                console.log('Form submitted:', formData);
-
-            } catch (error) {
-                // Show error message
-                formMessage.textContent = 'An error occurred. Please try again or email directly at alexromano.ceo@proton.me';
-                formMessage.className = 'form-message error';
-                formMessage.style.display = 'block';
-            } finally {
-                submitBtn.textContent = originalText;
-                submitBtn.disabled = false;
-
-                // Hide message after 5 seconds
-                setTimeout(() => {
-                    formMessage.style.display = 'none';
-                }, 5000);
-            }
-        });
+        // Form submission is handled natively by Netlify Forms
+        // Netlify will process the form and send email notifications to alexromano.ceo@proton.me
+        // Configure email notifications in Netlify Dashboard: Site Settings → Forms → Form notifications
 
         // ========== SMOOTH SCROLL ==========
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
